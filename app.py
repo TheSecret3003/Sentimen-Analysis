@@ -52,7 +52,7 @@ def take_inp():
 @app.post('/predict')
 def predict(text:str = Form(...)):
     clean_text = my_pipeline(text)
-    loaded_model = tf.keras.models.load_model('sentiment.h5')
+    loaded_model = tf.keras.models.load_model('sentiment_analysis.h5')
     predictions = loaded_model.predict(clean_text)
     sentiment = int(np.argmax(predictions))
     probability = max(predictions.tolist()[0])
